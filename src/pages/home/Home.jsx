@@ -3,15 +3,16 @@ import { FaAngleDown, FaAngleUp, FaCheckSquare, FaRegSquare } from 'react-icons/
 import SelectBrand from '../../components/SelectBrand';
 import SelectCategory from '../../components/SelectCategory';
 import SelectPriceRange from '../../components/SelectPriceRange';
+import { CiSearch } from 'react-icons/ci';
 
 const Home = () => {
     const [clickBrand, setClickBrand] = useState(false);
     const [brands, setBrands] = useState([]);
     const [categorys, setCategorys] = useState([]);
     const [prices, setPrices] = useState([]);
-    console.log('brands - ' ,brands);
-    console.log('categorys - ' ,categorys)
-    console.log('priceRanges - ' ,prices)
+    console.log('brands - ', brands);
+    console.log('categorys - ', categorys)
+    console.log('priceRanges - ', prices)
 
     // handle brand
     const handleSelectBrand = (brand) => {
@@ -32,7 +33,6 @@ const Home = () => {
     }
 
     // handlePriceRange
-    // handleCategorySelect
     const handleSelectPriceRange = (range) => {
         setPrices((prevSelectPrices) => {
             return prevSelectPrices?.includes(range) ?
@@ -41,8 +41,22 @@ const Home = () => {
         })
     }
 
+    // handleSearch
+    const handleSearch = (event) => {
+        event.preventDefault();
+        const searchValue = event.target.value;
+        console.log(searchValue);
+    }
+
     return (
-        <div className='relative w-full max-w-6xl mx-auto px-4 lg:px-0 mt-6'>
+        <div className='relative w-full max-w-6xl mx-auto px-4 lg:px-0 space-y-6 mt-6'>
+            <div className='w-full lg:w-1/3 relative'>
+                <input onChange={handleSearch} className='py-2 px-3 rounded-full bg-gray-100  w-full' type="text" />
+                {/* <span className='absolute bg-gray-300 h-full px-3'><CiSearch /></span> */}
+                <span className="absolute inset-y-0 right-0 flex items-center text-2xl h-full px-3">
+                    <CiSearch />
+                </span>
+            </div>
             <div className='flex justify-start items-center gap-6'>
                 <button onClick={() => setClickBrand(!clickBrand)} className={`border py-2 px-6 rounded-lg flex justify-center items-center gap-2 ${clickBrand && 'border-black'}`}>
                     <span>Filter</span>
@@ -55,7 +69,7 @@ const Home = () => {
                 
             </div> */}
 
-            <div className={`absolute left-0 top-full w-full lg:w-fit bg-slate-50 shadow-lg grid grid-cols-2 lg:grid-cols-3 gap-3 mt-1 pt-3 px-3 rounded-lg duration-200 ${clickBrand ? 'opacity-100 ' : 'opacity-0 pointer-events-none'} justify-items-start overflow-y-scroll h-[300px]`}>
+            <div className={`absolute left-0 top-full w-full lg:w-fit bg-slate-50 shadow-lg grid grid-cols-2 lg:grid-cols-3 gap-3 mt-1 pt-3 px-3 rounded-lg duration-200 ${clickBrand ? 'opacity-100 ' : 'opacity-0 pointer-events-none'} justify-items-start overflow-y-scroll h-[50vh]`}>
                 {/* Filter by brand name */}
                 <h2 className='font-bold border-b pb-2 col-span-2 lg:col-span-3 w-full'>Brand Name</h2>
                 <SelectBrand handleSelectBrand={handleSelectBrand} brands={brands} brandName={'Apple'}></SelectBrand>
