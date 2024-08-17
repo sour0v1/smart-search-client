@@ -36,7 +36,11 @@ const Home = () => {
                 <button onClick={() => setClickBrand(!clickBrand)} className='border py-2 px-6 rounded-lg'>Filter</button>
                 <button className='border py-2 px-6 rounded-lg'>Sort by :</button>
             </div>
-            <div className={`bg-gray-200 absolute left-0 top-full grid grid-cols-2 lg:grid-cols-3 gap-3 mt-1 p-3 rounded-lg duration-200 ${clickBrand ? 'opacity-100 ' : 'opacity-0 pointer-events-none'} justify-items-start overflow-y-scroll h-[300px] w-full lg:w-fit`}>
+            {/* <div className=' '>
+                
+            </div> */}
+
+            <div className={`absolute left-0 top-full w-full lg:w-fit bg-slate-50 shadow-lg grid grid-cols-2 lg:grid-cols-3 gap-3 mt-1 pt-3 px-3 rounded-lg duration-200 ${clickBrand ? 'opacity-100 ' : 'opacity-0 pointer-events-none'} justify-items-start overflow-y-scroll h-[300px]`}>
                 {/* Filter by brand name */}
                 <h2 className='font-bold border-b pb-2 col-span-2 lg:col-span-3 border-black w-full'>Brand Name</h2>
                 <SelectBrand handleSelectBrand={handleSelectBrand} brands={brands} brandName={'Apple'}></SelectBrand>
@@ -54,6 +58,12 @@ const Home = () => {
                 <SelectCategory handleSelectCategory={handleSelectCategory} categorys={categorys} categoryName={'5G'}></SelectCategory>
                 <SelectCategory handleSelectCategory={handleSelectCategory} categorys={categorys} categoryName={'Foldable'}></SelectCategory>
                 <SelectCategory handleSelectCategory={handleSelectCategory} categorys={categorys} categoryName={'Gaming'}></SelectCategory>
+
+
+                {/* confirm filter */}
+                <div className='bg-slate-50 border-t text-white py-2 col-span-2 lg:col-span-3 w-full sticky bottom-0 text-end'>
+                    <button className='text-white bg-black px-6 py-2 rounded-lg'>Apply</button>
+                </div>
 
             </div>
         </div>
