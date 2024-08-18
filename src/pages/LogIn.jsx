@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthContext } from '../Authprovider';
 
 const LogIn = () => {
+    const {user} = useContext(AuthContext);
+    console.log(user);
     const {
         register,
         handleSubmit,
