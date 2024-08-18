@@ -139,15 +139,21 @@ const Home = () => {
 
                     <div className={`absolute right-0 top-full w-full lg:w-fit bg-slate-50 shadow-lg grid  mt-1 py-4 px-6 rounded-lg duration-200 ${clickSort ? 'opacity-100 ' : 'opacity-0 pointer-events-none'} justify-items-start overflow-y-scroll h-fit space-y-3`}>
                         {/* Filter by brand name */}
-                        <button className='flex justify-center items-center gap-2' onClick={() => handleSort('low-to-high')}>
+                        <button className='flex justify-center items-center gap-2' onClick={() => {
+                            handleSort('low-to-high'); setClickSort(!clickSort)
+                        }}>
                             {sort === 'low-to-high' && <span><FaCheck /></span>}
                             <span>Price(Low to High)</span>
                         </button>
-                        <button className='flex justify-center items-center gap-2' onClick={() => handleSort('high-to-low')}>
+                        <button className='flex justify-center items-center gap-2' onClick={() => {
+                            handleSort('high-to-low'); setClickSort(!clickSort)
+                        }}>
                             {sort === 'high-to-low' && <span><FaCheck /></span>}
                             <span>Price(High to Low)</span>
                         </button>
-                        <button className='flex justify-center items-center gap-2' onClick={() => handleSort('date')}>
+                        <button className='flex justify-center items-center gap-2' onClick={() => {
+                            handleSort('date'); setClickSort(!clickSort)
+                        }}>
                             {sort === 'date' && <span><FaCheck /></span>}
                             <span>Date(Newest First)</span>
                         </button>
